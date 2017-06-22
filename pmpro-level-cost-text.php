@@ -8,35 +8,45 @@ Author: Stranger Studios
 Author URI: http://www.strangerstudios.com
 */
 
-/*
- * Setup admin pages
- */
-function pmprocf_setup() {
-    add_submenu_page('pmpro-membershiplevels', __('Cost Format', 'pmprocf'), __('Cost Format', 'pmprocf'), 'manage_options', 'pmpro-level-cost-text', 'pmprocf_admin_page');
+//Set up settings
+function cost_format_settings() {
+	echo "test 2 running";
+    $custom_fields = array(
+        'pmpro_hide_now' => array(
+            'field_name' => 'pmpro_hide_now',
+            'field_type' => 'select',
+            'label' => 'Remove the word "now" from level cost text.',
+            'options' => array(0 => 'No', 1 => 'Yes'),
+        ),
+        'pmpro_use_free' => array(
+            'field_name' => 'pmpro_use_free',
+            'field_type' => 'select',
+            'label' => 'Use the word "Free" instead of $0.00',
+            'options' => array(0 => 'No', 1 => 'Yes'),
+        ),
+        'pmpro_use_slash' => array(
+            'field_name' => 'pmpro_use_slash',
+            'field_type' => 'select',
+            'label' => 'Use "/" instead of "per"',
+            'options' => array(0 => 'No', 1 => 'Yes'),
+        ),
+        'pmpro_hide_decimals' => array(
+            'field_name' => 'pmpro_hide_decimals',
+            'field_type' => 'select',
+            'label' => 'Hide unnecessary decimals',
+            'options' => array(0 => 'No', 1 => 'Yes'),
+        ),
+        'pmpro_abbreviate_time' => array(
+            'field_name' => 'pmpro_abbreviate_time',
+            'field_type' => 'select',
+            'label' => 'Abbreviate "Month", "Week", and "Year" to "Mo", "Wk", and "Yr"',
+            'options' => array(0 => 'No', 1 => 'Yes'),
+        )
+    );
+
+    return $custom_fields;
 }
-add_action('admin_menu', 'pmprocf_setup');
-
-function pmprocf_admin_page()
-{
-    require_once( plugin_dir_path(__FILE__) ) . "adminpages/levelcostformatsettings.php";
-}
-
-/*
- *Add page to admin bar
-*/
-function pmprocf_admin_bar_menu() {
-	global $wp_admin_bar;
-	if ( !is_super_admin() || !is_admin_bar_showing() )
-		return;	
-	$wp_admin_bar->add_menu( array(
-	'id' => 'pmpro-level-cost-text',
-	'parent' => 'paid-memberships-pro',
-	'title' => __( 'Cost Format', 'pmprocf'),
-	'href' => get_admin_url(NULL, '/admin.php?page=pmpro-level-cost-text') ) );	
-}
-add_action('admin_bar_menu', 'pmprocf_admin_bar_menu', 1000);
-
-
+add_filter('pmpro_custom_advanced_settings','cost_format_settings');
 
 
 /*
