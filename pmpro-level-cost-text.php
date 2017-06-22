@@ -10,7 +10,6 @@ Author URI: http://www.strangerstudios.com
 
 //Set up settings
 function cost_format_settings() {
-	echo "test 2 running";
     $custom_fields = array(
         'pmpro_hide_now' => array(
             'field_name' => 'pmpro_hide_now',
@@ -47,7 +46,6 @@ function cost_format_settings() {
     return $custom_fields;
 }
 add_filter('pmpro_custom_advanced_settings','cost_format_settings');
-
 
 /*
 	This first set of functions adds a level cost text field to the edit membership levels page
@@ -99,10 +97,35 @@ function pclct_pmpro_level_cost_text_levels($cost, $level)
 	{				
 		$cost = $custom_text;
 	}
+	else{
+		if(pmpro_getOption('pmpro_hide_now') == 'Yes'){
+			$cost = str_replace(" now", "", $cost);
+			
+		}
+		if(pmpro_getOption('pmpro_use_free') == 'Yes'){
+			global $pmpro_currency_symbol;
+			$cost = str_replace($pmpro_currency_symbol.'0.00', 'free', $cost);
+			$cost = str_replace('0.00'.$pmpro_currency_symbol, 'free', $cost);
+			$cost = str_replace($pmpro_currency_symbol.'0,00', 'free', $cost);
+			$cost = str_replace('0,00'.$pmpro_currency_symbol, 'free', $cost);
+		}
+		if(pmpro_getOption('pmpro_use_slash') == 'Yes'){
+			$cost = str_replace(" per ", "/", $cost);
+		}
+		if(pmpro_getOption('pmpro_hide_decimals') == 'Yes'){
+			$cost = str_replace(".00", "", $cost);
+			$cost = str_replace(",00", "", $cost);
+		}
+		if(pmpro_getOption('pmpro_abbreviate_time') == 'Yes'){
+			$cost = str_replace("Year", "Yr", $cost);
+			$cost = str_replace("Wk", "Wk", $cost);
+			$cost = str_replace("Month", "Mo", $cost);
+		}
+	}
 	
 	return $cost;
 }
-add_filter("pmpro_level_cost_text", "pclct_pmpro_level_cost_text_levels", 10, 2);		//priority 10, so discount code text will override this
+add_filter("pmpro_level_cost_text", "pclct_pmpro_level_cost_text_levels", 15, 2);		//priority 15, so discount code text will override this
 
 /*	
 	This function will save a level_cost_text for a discount code into an array stored in pmpro_code_level_cost_text.
