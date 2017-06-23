@@ -101,6 +101,149 @@ function pclct_pmpro_membership_level_after_other_settings()
 			</tr>
 		</td>
 	</tr> 
+<tr>
+<th scope="row" valign="top"><label for="level_cost_text"><label for="variable_references">Variable Reference:</label></th>
+<td>
+<div id="template_reference" style="overflow:scroll;height:250px;width:800px;;">
+				<table class="widefat striped">
+					<tr>
+						<th colspan=2><?php _e('General Settings / Membership Info To Be Used In Level Cost Text:', 'pmproet');?></th>
+					</tr>
+					<tr>
+						<td>!!name!!</td>
+						<td><?php _e('Display Name (Profile/Edit User > Display name publicly as)', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!user_login!!</td>
+						<td><?php _e('Username', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!sitename!!</td>
+						<td><?php _e('Site Title', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!siteemail!!</td>
+						<td><?php _e('Site Email Address (General Settings > Email OR Memberships > Email Settings)', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!membership_id!!</td>
+						<td><?php _e('Membership Level ID', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!membership_level_name!!</td>
+						<td><?php _e('Membership Level Name', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!membership_change!!</td>
+						<td><?php _e('Membership Level Change', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!membership_expiration!!</td>
+						<td><?php _e('Membership Level Expiration', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!display_name!!</td>
+						<td><?php _e('Display Name (Profile/Edit User > Display name publicly as)', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!enddate!!</td>
+						<td><?php _e('User Subscription End Date', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!user_email!!</td>
+						<td><?php _e('User Email', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!login_link!!</td>
+						<td><?php _e('Login URL', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!levels_link!!</td>
+						<td><?php _e('Membership Levels Page URL', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<th colspan=2>Billing Information</th>
+					</tr>
+					<tr>
+						<td>!!billing_address!!</td>
+						<td><?php _e('Billing Info Complete Address', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!billing_name!!</td>
+						<td><?php _e('Billing Info Name', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!billing_street!!</td>
+						<td><?php _e('Billing Info Street Address', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!billing_city!!</td>
+						<td><?php _e('Billing Info City', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!billing_state!!</td>
+						<td><?php _e('Billing Info State', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!billing_zip!!</td>
+						<td><?php _e('Billing Info ZIP Code', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!billing_country!!</td>
+						<td><?php _e('Billing Info Country', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!billing_phone!!</td>
+						<td><?php _e('Billing Info Phone #', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!cardtype!!</td>
+						<td><?php _e('Credit Card Type', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!accountnumber!!</td>
+						<td><?php _e('Credit Card Number (last 4 digits)', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!expirationmonth!!</td>
+						<td><?php _e('Credit Card Expiration Month (mm format)', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!expirationyear!!</td>
+						<td><?php _e('Credit Card Expiration Year (yyyy format)', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!membership_cost!!</td>
+						<td><?php _e('Membership Level Cost Text', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!instructions!!</td>
+						<td><?php _e('Payment Instructions (used in Checkout - Email Template)', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!invoice_id!!</td>
+						<td><?php _e('Invoice ID', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!invoice_total!!</td>
+						<td><?php _e('Invoice Total', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!invoice_date!!</td>
+						<td><?php _e('Invoice Date', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!discount_code!!</td>
+						<td><?php _e('Discount Code Applied', 'pmproet');?></td>
+					</tr>
+					<tr>
+						<td>!!invoice_link!!</td>
+						<td><?php _e('Invoice Page URL', 'pmproet');?></td>
+					</tr>
+				</table>
+			</div>
+</td>
+</tr>
 </tbody>
 </table>
 <?php
