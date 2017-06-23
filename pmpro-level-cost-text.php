@@ -78,22 +78,42 @@ function format_cost($cost) {
 
 //Switches out variables within '!!' with the intended value
 function apply_variables($custom_text, $cost, $level){
-	$custom_text = str_replace("!!default_cost_text!!", format_cost($cost), $custom_text);
-	$custom_text = str_replace("!!short_cost_text!!", format_cost(str_replace("The price for membership is ", "", $cost)), $custom_text);
-	$custom_text = str_replace("!!level_name!!", $level->{'name'}, $custom_text);
-	$custom_text = str_replace("!!level_description!!", $level->{'description'}, $custom_text);
-	$custom_text = str_replace("!!level_confirmation_message!!", $level->{'confirmation'}, $custom_text);
-	$custom_text = str_replace("!!initial_payment!!", $level->{'initial_payment'}, $custom_text);
-	$custom_text = str_replace("!!billing_amount!!", $level->{'billing_amount'}, $custom_text);
-	$custom_text = str_replace("!!cycle_number!!", $level->{'cycle_number'}, $custom_text);
-	$custom_text = str_replace("!!cycle_period!!", $level->{'cycle_period'}, $custom_text);
-	$custom_text = str_replace("!!billing_limit!!", $level->{'billing_limit'}, $custom_text);
-	$custom_text = str_replace("!!trial_amount!!", $level->{'trial_amount'}, $custom_text);
-	$custom_text = str_replace("!!trial_limit!!", $level->{'trial_limit'}, $custom_text);
-	$custom_text = str_replace("!!allow_signups!!", $level->{'allow_signups'}, $custom_text);
-	$custom_text = str_replace("!!expiration_number!!", $level->{'expiration_number'}, $custom_text);
-	$custom_text = str_replace("!!expiration_period!!", $level->{'expiration_period'}, $custom_text);
-	return $custom_text;
+	$search = array(
+		"!!default_cost_text!!",
+		"!!short_cost_text!!",
+		"!!level_name!!",
+		"!!level_description!!",
+		"!!level_confirmation_message!!",
+		"!!initial_payment!!",
+		"!!billing_amount!!",
+		"!!cycle_number!!",
+		"!!cycle_period!!",
+		"!!billing_limit!!",
+		"!!trial_amount!!",
+		"!!trial_limit!!",
+		"!!allow_signups!!",
+		"!!expiration_number!!",
+		"!!expiration_period!!"
+	);
+	$replace = array(
+		format_cost($cost),
+		format_cost(str_replace("The price for membership is ", "", $cost)),
+		$level->{'name'},
+		$level->{'description'},
+		$level->{'confirmation'},
+		$level->{'initial_payment'},
+		$level->{'billing_amount'},
+		$level->{'cycle_number'},
+		$level->{'cycle_period'},
+		$level->{'billing_limit'},
+		$level->{'trial_amount'},
+		$level->{'trial_limit'},
+		$level->{'allow_signups'},
+		$level->{'expiration_number'},
+		$level->{'expiration_period'}
+	);
+	
+	return str_replace($search, $replace, $custom_text);
 }
 
 /*
