@@ -297,6 +297,79 @@ function pclct_pmpro_discount_code_after_level_settings($code_id, $level)
 			</tr>
 		</td>
 	</tr> 
+	<tr>
+		<th scope="row" valign="top"><label for="level_cost_text"><label for="variable_references">Variable Reference:</label></th>
+			<td>
+				<div id="template_reference" style="overflow:scroll;height:250px;width:800px; border:0px;">
+					<table class="widefat striped" style="margin:0px;">
+						<tr>
+							<th colspan=2>Variables To Be Used In Level Cost Text:</th>
+						</tr>
+						<tr>
+							<td>!!default_cost_text!!</td>
+							<td>Ex: "The price for membership is $20.00 now and then $10.00 per Year." This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
+						</tr>
+						<tr>
+							<td>!!short_cost_text!!</td>
+							<td>Ex: "$20.00 now and then $10.00 per Year." This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
+						</tr>
+						<tr>
+							<td>!!level_name!!</td>
+							<td>The name of the level the user is registering for</td>
+						</tr>
+						<tr>
+							<td>!!level_description!!</td>
+							<td>The description for the level the user is registering for</td>
+						</tr>
+						<tr>
+							<td>!!level_confirmation_message!!</td>
+							<td>The confirmation message of the level the user is registering for</td>
+						</tr>
+						<tr>
+							<td>!!initial_payment!!</td>
+							<td>The initial payment for the level the user is registering for</td>
+						</tr>
+						<tr>
+							<td>!!billing_amount!!</td>
+							<td>How much the user has to pay for a recurring subscription</td>
+						</tr>
+						<tr>
+							<td>!!cycle_number!!</td>
+							<td>How many cycle periods must pass for one recurring subscription cycle to be complete</td>
+						</tr>
+						<tr>
+							<td>!!cycle_period!!</td>
+							<td>The unit of time cycle_number uses to measure</td>
+						</tr>
+						<tr>
+							<td>!!billing_limit!!</td>
+							<td>The total number of recurring billing cycles. 0 is infinite.</td>
+						</tr>
+						<tr>
+							<td>!!trial_amount!!</td>
+							<td>The cost of one recurring payment during the trial period</td>
+						</tr>
+						<tr>
+							<td>!!trial_limit!!</td>
+							<td>The number of billing cycles that are at the trial price</td>
+						</tr>
+						<tr>
+							<td>!!allow_signups!!</td>
+							<td>whether people are allowed to sign up for this level</td>
+						</tr>
+						<tr>
+							<td>!!expiration_number!!</td>
+							<td>The number expiration periods until the membership expires</td>
+						</tr>
+						<tr>
+							<td>!!expiration_period!!</td>
+							<td>The unit of time expiration_number is measured in</td>
+						</tr>
+					
+					</table>
+				</div>
+			</td>
+		</tr>
 </tbody>
 </table>
 <?php
@@ -338,7 +411,9 @@ function pclct_pmpro_level_cost_text_code($cost, $level)
 		
 		if(!empty($level_cost_text))
 		{
-			$cost = $level_cost_text;
+			//return $level_cost_text;
+			//$cost = $level_cost_text;
+			$cost = apply_variables($level_cost_text, $cost, $level);
 			return $cost;
 		}		
 	}
