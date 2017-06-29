@@ -9,7 +9,6 @@ Author URI: http://www.strangerstudios.com
 */
 
 //Set up settings in Advanced Settings
-//TODO: Put header at the top of this?
 function cost_format_settings() {
     $custom_fields = array(
         'pmpro_hide_now' => array(
@@ -83,7 +82,6 @@ function apply_variables($custom_text, $cost, $level){
 		"!!short_cost_text!!",
 		"!!level_name!!",
 		"!!level_description!!",
-		"!!level_confirmation_message!!",
 		"!!initial_payment!!",
 		"!!billing_amount!!",
 		"!!cycle_number!!",
@@ -100,24 +98,23 @@ function apply_variables($custom_text, $cost, $level){
 		format_cost(str_replace("The price for membership is ", "", $cost)),
 		$level->{'name'},
 		$level->{'description'},
-		$level->{'confirmation'},
-		$level->{'initial_payment'},
-		$level->{'billing_amount'},
+		format_cost($level->{'initial_payment'}),
+		format_cost($level->{'billing_amount'}),
 		$level->{'cycle_number'},
-		$level->{'cycle_period'},
+		format_cost($level->{'cycle_period'}),
 		$level->{'billing_limit'},
-		$level->{'trial_amount'},
+		format_cost($level->{'trial_amount'}),
 		$level->{'trial_limit'},
 		$level->{'allow_signups'},
 		$level->{'expiration_number'},
-		$level->{'expiration_period'}
+		format_cost($level->{'expiration_period'})
 	);
 	
 	return str_replace($search, $replace, $custom_text);
 }
 
 /*
-	This first set of functions adds a level cost text field to the edit membership levels page
+	This set of functions adds a level cost text field to the edit membership levels page
 */
 //add level cost text field to level price settings
 function pclct_pmpro_membership_level_after_other_settings()
@@ -168,16 +165,12 @@ function pclct_pmpro_membership_level_after_other_settings()
 							<td>The description for the level the user is registering for</td>
 						</tr>
 						<tr>
-							<td>!!level_confirmation_message!!</td>
-							<td>The confirmation message of the level the user is registering for</td>
-						</tr>
-						<tr>
 							<td>!!initial_payment!!</td>
-							<td>The initial payment for the level the user is registering for</td>
+							<td>The initial payment for the level the user is registering for. This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
 						</tr>
 						<tr>
 							<td>!!billing_amount!!</td>
-							<td>How much the user has to pay for a recurring subscription</td>
+							<td>How much the user has to pay for a recurring subscription. This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
 						</tr>
 						<tr>
 							<td>!!cycle_number!!</td>
@@ -185,7 +178,7 @@ function pclct_pmpro_membership_level_after_other_settings()
 						</tr>
 						<tr>
 							<td>!!cycle_period!!</td>
-							<td>The unit of time cycle_number uses to measure</td>
+							<td>The unit of time cycle_number uses to measure. This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
 						</tr>
 						<tr>
 							<td>!!billing_limit!!</td>
@@ -193,7 +186,7 @@ function pclct_pmpro_membership_level_after_other_settings()
 						</tr>
 						<tr>
 							<td>!!trial_amount!!</td>
-							<td>The cost of one recurring payment during the trial period</td>
+							<td>The cost of one recurring payment during the trial period, This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
 						</tr>
 						<tr>
 							<td>!!trial_limit!!</td>
@@ -209,7 +202,7 @@ function pclct_pmpro_membership_level_after_other_settings()
 						</tr>
 						<tr>
 							<td>!!expiration_period!!</td>
-							<td>The unit of time expiration_number is measured in</td>
+							<td>The unit of time expiration_number is measured in, This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
 						</tr>
 					
 					</table>
@@ -320,10 +313,6 @@ function pclct_pmpro_discount_code_after_level_settings($code_id, $level)
 						<tr>
 							<td>!!level_description!!</td>
 							<td>The description for the level the user is registering for</td>
-						</tr>
-						<tr>
-							<td>!!level_confirmation_message!!</td>
-							<td>The confirmation message of the level the user is registering for</td>
 						</tr>
 						<tr>
 							<td>!!initial_payment!!</td>
