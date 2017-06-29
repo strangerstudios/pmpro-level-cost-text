@@ -316,11 +316,11 @@ function pclct_pmpro_discount_code_after_level_settings($code_id, $level)
 						</tr>
 						<tr>
 							<td>!!initial_payment!!</td>
-							<td>The initial payment for the level the user is registering for</td>
+							<td>The initial payment for the level the user is registering for. This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
 						</tr>
 						<tr>
 							<td>!!billing_amount!!</td>
-							<td>How much the user has to pay for a recurring subscription</td>
+							<td>How much the user has to pay for a recurring subscription. This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
 						</tr>
 						<tr>
 							<td>!!cycle_number!!</td>
@@ -328,7 +328,7 @@ function pclct_pmpro_discount_code_after_level_settings($code_id, $level)
 						</tr>
 						<tr>
 							<td>!!cycle_period!!</td>
-							<td>The unit of time cycle_number uses to measure</td>
+							<td>The unit of time cycle_number uses to measure. This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
 						</tr>
 						<tr>
 							<td>!!billing_limit!!</td>
@@ -336,7 +336,7 @@ function pclct_pmpro_discount_code_after_level_settings($code_id, $level)
 						</tr>
 						<tr>
 							<td>!!trial_amount!!</td>
-							<td>The cost of one recurring payment during the trial period</td>
+							<td>The cost of one recurring payment during the trial period, This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
 						</tr>
 						<tr>
 							<td>!!trial_limit!!</td>
@@ -352,7 +352,7 @@ function pclct_pmpro_discount_code_after_level_settings($code_id, $level)
 						</tr>
 						<tr>
 							<td>!!expiration_period!!</td>
-							<td>The unit of time expiration_number is measured in</td>
+							<td>The unit of time expiration_number is measured in, This will be formated according to the options in <a href="../wp-admin/admin.php?page=pmpro-advancedsettings">Advanced Settings.</a></td>
 						</tr>
 					
 					</table>
