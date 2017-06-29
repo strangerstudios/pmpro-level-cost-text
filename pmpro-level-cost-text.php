@@ -89,7 +89,6 @@ function apply_variables($custom_text, $cost, $level){
 		"!!billing_limit!!",
 		"!!trial_amount!!",
 		"!!trial_limit!!",
-		"!!allow_signups!!",
 		"!!expiration_number!!",
 		"!!expiration_period!!"
 	);
@@ -105,7 +104,6 @@ function apply_variables($custom_text, $cost, $level){
 		$level->{'billing_limit'},
 		format_cost($level->{'trial_amount'}),
 		$level->{'trial_limit'},
-		$level->{'allow_signups'},
 		$level->{'expiration_number'},
 		format_cost($level->{'expiration_period'})
 	);
@@ -191,10 +189,6 @@ function pclct_pmpro_membership_level_after_other_settings()
 						<tr>
 							<td>!!trial_limit!!</td>
 							<td>The number of billing cycles that are at the trial price</td>
-						</tr>
-						<tr>
-							<td>!!allow_signups!!</td>
-							<td>whether people are allowed to sign up for this level</td>
 						</tr>
 						<tr>
 							<td>!!expiration_number!!</td>
@@ -341,10 +335,6 @@ function pclct_pmpro_discount_code_after_level_settings($code_id, $level)
 						<tr>
 							<td>!!trial_limit!!</td>
 							<td>The number of billing cycles that are at the trial price</td>
-						</tr>
-						<tr>
-							<td>!!allow_signups!!</td>
-							<td>whether people are allowed to sign up for this level</td>
 						</tr>
 						<tr>
 							<td>!!expiration_number!!</td>
