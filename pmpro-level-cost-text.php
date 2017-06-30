@@ -11,34 +11,44 @@ Author URI: http://www.strangerstudios.com
 //Set up settings in Advanced Settings
 function pclct_cost_format_settings() {
     $custom_fields = array(
+        'pmpro_custom_level_cost_heading' => array(
+        	'field_name' => 'pmpro_custom_level_cost_heading',
+        	'field_type' => 'heading',
+        	'label' 	 => 'Level Cost Text Settings',
+        ),
         'pmpro_hide_now' => array(
             'field_name' => 'pmpro_hide_now',
             'field_type' => 'select',
-            'label' => 'Remove the word "now" from level cost text.',
+            'label'		 => 'Remove "Now"',
+            'description' => 'Remove the word "now" from level cost text.',
             'options' => array(0 => 'No', 1 => 'Yes'),
         ),
         'pmpro_use_free' => array(
             'field_name' => 'pmpro_use_free',
             'field_type' => 'select',
-            'label' => 'Use the word "Free" instead of $0.00',
+            'label'		 => 'Use "Free"',
+            'description' => 'Use the word "Free" instead of $0.00',
             'options' => array(0 => 'No', 1 => 'Yes'),
         ),
         'pmpro_use_slash' => array(
             'field_name' => 'pmpro_use_slash',
             'field_type' => 'select',
-            'label' => 'Use "/" instead of "per"',
+            'label'		 => 'Use Slashes',
+            'description' => 'Use "/" instead of "per"',
             'options' => array(0 => 'No', 1 => 'Yes'),
         ),
         'pmpro_hide_decimals' => array(
             'field_name' => 'pmpro_hide_decimals',
             'field_type' => 'select',
-            'label' => 'Hide unnecessary decimals',
+            'label'		 => 'Hide Unnecessary Decimals',
+            'description' => 'Hide unnecessary decimals',
             'options' => array(0 => 'No', 1 => 'Yes'),
         ),
         'pmpro_abbreviate_time' => array(
             'field_name' => 'pmpro_abbreviate_time',
             'field_type' => 'select',
-            'label' => 'Abbreviate "Month", "Week", and "Year" to "Mo", "Wk", and "Yr"',
+            'label'		 => 'Abbreviate Billing Periods',
+            'description' => 'Abbreviate "Month", "Week", and "Year" to "Mo", "Wk", and "Yr"',
             'options' => array(0 => 'No', 1 => 'Yes'),
         )
     );
