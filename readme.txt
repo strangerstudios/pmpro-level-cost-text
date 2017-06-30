@@ -1,7 +1,7 @@
-=== PMPro Custom Level Cost Text ===
+=== Paid Memberships Pro - Custom Level Cost Text Add On  ===
 Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, memberships, ecommerce
-Requires at least: 3.0
+Requires at least: 4.0
 Tested up to: 4.8
 Stable tag: .3
 
@@ -13,13 +13,13 @@ Please use with care as sometimes the level cost text is the only way a user wil
 
 This plugin requires Paid Memberships Pro to function.
 
-Adds a "level cost text" field to PMPro membership levels and discount codes to allow you to override the automatically generated level cost text PMPro provides.
+Adds a "level cost text" field to PMPro membership levels and discount codes to allow you to override the automatically generated level cost text PMPro provides. Since v.3 also adds some global settings to the PMPro advanced settings tab to make your level cost text nicer.
 
 == Installation ==
 
 1. Upload the `pmpro-level-cost-text` directory to the `/wp-content/plugins/` directory of your site.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. That's it. No settings.
+1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. That's it. No settings.
 
 == Changelog == 
 = .3 =

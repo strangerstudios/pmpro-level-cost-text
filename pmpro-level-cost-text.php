@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: PMPro Custom Level Cost Test
+Plugin Name: Paid Memberships Pro - Custom Level Cost Text Add On
 Plugin URI: http://www.paidmembershipspro.com/wp/pmpro-custom-level-cost-text/
 Description: Manually override the level cost text for each level or discount code.
-Version: .1
+Version: .3
 Author: Stranger Studios
 Author URI: http://www.strangerstudios.com
 */
@@ -438,3 +438,34 @@ function pmpro_getCodeCustomLevelCostText($code_id, $level_id)
 	//didn't find it
 	return "";
 }
+
+/**
+ * Add links to the action links 
+ */
+function plct_add_action_links($links) {	
+	$cap = apply_filters('pmpro_add_member_cap', 'edit_users');	
+	if(current_user_can($cap))
+	{
+		$new_links = array(
+			'<a href="' . admin_url('admin.php?page=pmpro-advancedsettings#LevelCostText') . '" title="' . esc_attr(__('Go to Level Cost Text Advanced Settings', 'pmpro-level-cost-text')) . '">' . __('Settings', 'pmpro-level-cost-text') . '</a>',
+		);
+	}
+	return array_merge($new_links, $links);
+}
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'plct_add_action_links');
+
+/**
+ * Add links to the plugin row meta
+ */
+function pclct_plugin_row_meta($links, $file) {
+	if(strpos($file, 'pmpro-level-cost-text.php') !== false)
+	{
+		$new_links = array(
+			'<a href="' . esc_url('http://www.paidmembershipspro.com/add-ons/plugins-on-github/pmpro-custom-level-cost-text/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro-level-cost-text' ) ) . '">' . __( 'Docs', 'pmpro-level-cost-text' ) . '</a>',
+			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro' ) ) . '">' . __( 'Support', 'pmpro-level-cost-text' ) . '</a>',
+		);
+		$links = array_merge($links, $new_links);
+	}
+	return $links;
+}
+add_filter('plugin_row_meta', 'pclct_plugin_row_meta', 10, 2);
