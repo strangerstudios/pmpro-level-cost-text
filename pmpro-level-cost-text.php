@@ -127,6 +127,63 @@ function pclct_apply_variables($custom_text, $cost, $level){
 	return str_replace($search, $replace, $custom_text);
 }
 
+function pclct_list_variables(){
+?>
+		<tr>
+			<td>!!default_cost_text!!</td>
+			<td><?php _e('Ex: "The price for membership is $20.00 now and then $10.00 per Year."', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!short_cost_text!!</td>
+			<td><?php _e('Ex: "$20.00 now and then $10.00 per Year."', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!level_name!!</td>
+			<td><?php _e('The name of the level the user is registering for.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!level_description!!</td>
+			<td><?php _e('The description for the level the user is registering for.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!initial_payment!!</td>
+			<td><?php _e('The initial payment for the level the user is registering for.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!billing_amount!!</td>
+			<td><?php _e('How much the user has to pay for a recurring subscription.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!cycle_number!!</td>
+			<td><?php _e('How many cycle periods must pass for one recurring subscription cycle to be complete.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!cycle_period!!</td>
+			<td><?php _e('The unit of time cycle_number uses to measure.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!billing_limit!!</td>
+			<td><?php _e('The total number of recurring billing cycles. 0 is infinite.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!trial_amount!!</td>
+			<td><?php _e('The cost of one recurring payment during the trial period.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!trial_limit!!</td>
+			<td><?php _e('The number of billing cycles that are at the trial price.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!expiration_number!!</td>
+			<td><?php _e('The number expiration periods until the membership expires.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+		<tr>
+			<td>!!expiration_period!!</td>
+			<td><?php _e('The unit of time expiration_number is measured in.', "pmpro-level-cost-text"); ?></td>
+		</tr>
+	<?php
+}
+
 /*
 	This set of functions adds a level cost text field to the edit membership levels page
 */
@@ -162,58 +219,7 @@ function pclct_pmpro_membership_level_after_other_settings()
 						<tr>
 							<th colspan=2>Level Information To Be Used In Level Cost Text:</th>
 						</tr>
-						<tr>
-							<td>!!default_cost_text!!</td>
-							<td><?php _e('Ex: "The price for membership is $20.00 now and then $10.00 per Year."', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!short_cost_text!!</td>
-							<td><?php _e('Ex: "$20.00 now and then $10.00 per Year."', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!level_name!!</td>
-							<td><?php _e('The name of the level the user is registering for.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!level_description!!</td>
-							<td><?php _e('The description for the level the user is registering for.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!initial_payment!!</td>
-							<td><?php _e('The initial payment for the level the user is registering for.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!billing_amount!!</td>
-							<td><?php _e('How much the user has to pay for a recurring subscription.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!cycle_number!!</td>
-							<td><?php _e('How many cycle periods must pass for one recurring subscription cycle to be complete.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!cycle_period!!</td>
-							<td><?php _e('The unit of time cycle_number uses to measure.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!billing_limit!!</td>
-							<td><?php _e('The total number of recurring billing cycles. 0 is infinite.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!trial_amount!!</td>
-							<td><?php _e('The cost of one recurring payment during the trial period.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!trial_limit!!</td>
-							<td><?php _e('The number of billing cycles that are at the trial price.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!expiration_number!!</td>
-							<td><?php _e('The number expiration periods until the membership expires.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!expiration_period!!</td>
-							<td><?php _e('The unit of time expiration_number is measured in.', "pmpro-level-cost-text"); ?></td>
-						</tr>
+						<?php pclct_list_variables(); ?>
 					
 					</table>
 				</div>
@@ -308,58 +314,7 @@ function pclct_pmpro_discount_code_after_level_settings($code_id, $level)
 						<tr>
 							<th colspan=2>Variables To Be Used In Level Cost Text:</th>
 						</tr>
-						<tr>
-							<td>!!default_cost_text!!</td>
-							<td><?php _e('Ex: "The price for membership is $20.00 now and then $10.00 per Year."', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!short_cost_text!!</td>
-							<td><?php _e('Ex: "$20.00 now and then $10.00 per Year."', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!level_name!!</td>
-							<td><?php _e('The name of the level the user is registering for.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!level_description!!</td>
-							<td><?php _e('The description for the level the user is registering for.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!initial_payment!!</td>
-							<td><?php _e('The initial payment for the level the user is registering for.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!billing_amount!!</td>
-							<td><?php _e('How much the user has to pay for a recurring subscription.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!cycle_number!!</td>
-							<td><?php _e('How many cycle periods must pass for one recurring subscription cycle to be complete.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!cycle_period!!</td>
-							<td><?php _e('The unit of time cycle_number uses to measure.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!billing_limit!!</td>
-							<td><?php _e('The total number of recurring billing cycles. 0 is infinite.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!trial_amount!!</td>
-							<td><?php _e('The cost of one recurring payment during the trial period.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!trial_limit!!</td>
-							<td><?php _e('The number of billing cycles that are at the trial price.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!expiration_number!!</td>
-							<td><?php _e('The number expiration periods until the membership expires.', "pmpro-level-cost-text"); ?></td>
-						</tr>
-						<tr>
-							<td>!!expiration_period!!</td>
-							<td><?php _e('The unit of time expiration_number is measured in.', "pmpro-level-cost-text"); ?></td>
-						</tr>
+						<?php pclct_list_variables(); ?>
 					</table>
 				</div>
 			</td>
