@@ -3,7 +3,7 @@ Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, memberships, ecommerce, level cost
 Requires at least: 4.0
 Tested up to: 4.8
-Stable tag: .3
+Stable tag: .3.1
 
 Modify the default level cost text per level, per discount code, or globally via advanced settings.
 
@@ -22,7 +22,11 @@ This plugin requires Paid Memberships Pro.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Edit a Membership Level, Discount Code or the Memberships > Advanced Settings page to modify generated level cost text.
 
-== Changelog == 
+== Changelog = 
+= .3.1 =
+* SECURITY: Better sanitizing of the level cost text fields.
+* BUG/ENHANCEMENT: Fixed styling of the variable references shown on the edit discount code page.
+
 = .3 =
 * ENHANCEMENT: Added settings to the Memberships > Advanced Settings page to globally override level cost text.
 * ENHANCEMENT: Added variables to be used in custom level cost text fields.

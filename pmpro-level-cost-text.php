@@ -3,7 +3,7 @@
 Plugin Name: Paid Memberships Pro - Custom Level Cost Text Add On
 Plugin URI: http://www.paidmembershipspro.com/wp/pmpro-custom-level-cost-text/
 Description: Modify the default level cost text per level, per discount code, or globally via advanced settings.
-Version: .3
+Version: .3.1
 Author: Stranger Studios
 Author URI: http://www.strangerstudios.com
 Text Domain: pmpro-level-cost-text
