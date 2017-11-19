@@ -105,7 +105,7 @@ function pclct_apply_variables($custom_text, $cost, $level){
 		"!!expiration_number!!",
 		"!!expiration_period!!"
 	);
-
+	
 	$replace = array(
 		pclct_format_cost($cost),
 		pclct_format_cost(str_replace("The price for membership is ", "", $cost)),
@@ -124,6 +124,9 @@ function pclct_apply_variables($custom_text, $cost, $level){
 		pclct_format_cost($level->expiration_period)
 	);
 	
+	$search  = apply_filters('pclct_variables', $search);
+	$replace = apply_filters('pclct_variables_content', $replace, $cost, $level);
+
 	return str_replace($search, $replace, $custom_text);
 }
 
