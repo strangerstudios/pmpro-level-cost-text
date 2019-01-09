@@ -79,8 +79,7 @@ function pclct_format_cost($cost) {
 	if(pmpro_getOption('pmpro_hide_decimals') == 'Yes'){
 		if ( ! empty( $pmpro_currency )
 		&& is_array( $pmpro_currencies[$pmpro_currency] )
-		&& isset( $pmpro_currencies[$pmpro_currency]['decimal_separator'] )
-		&& $pmpro_currencies[$pmpro_currency]['decimal_separator'] == ',' ) {
+		&& isset( $pmpro_currencies[$pmpro_currency]['decimal_separator'] ) ) {
 			$decimal_separator = $pmpro_currencies[$pmpro_currency]['decimal_separator'];
 		} else {
 			$decimal_separator = '.';
