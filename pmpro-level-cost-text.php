@@ -62,10 +62,17 @@ add_filter('pmpro_custom_advanced_settings','pclct_cost_format_settings');
 function pclct_format_cost($cost) {
 	global $pmpro_currency, $pmpro_currencies;
 	
+	// If numeric, run through pmpro_round_price as a base
+	if ( is_numeric( $cost ) && function_exists( 'pmpro_round_price' ) ) {
+		$cost = pmpro_round_price( $cost );
+		
+		// TODO: Add zero decimals back if not set to hide decimals
+	}
+	
 	if(pmpro_getOption('pmpro_hide_now') == 'Yes'){
 		$cost = str_replace(" now", "", $cost);
-		
 	}
+	
 	if(pmpro_getOption('pmpro_use_free') == 'Yes'){
 		global $pmpro_currency_symbol;
 		$cost = str_replace($pmpro_currency_symbol.'0.00', __('Free', "pmpro-level-cost-text"), $cost);
@@ -73,9 +80,11 @@ function pclct_format_cost($cost) {
 		$cost = str_replace($pmpro_currency_symbol.'0,00', __('Free', "pmpro-level-cost-text"), $cost);
 		$cost = str_replace('0,00'.$pmpro_currency_symbol, __('Free', "pmpro-level-cost-text"), $cost);
 	}
+	
 	if(pmpro_getOption('pmpro_use_slash') == 'Yes'){
 		$cost = str_replace(" per ", "/", $cost);
 	}
+	
 	if(pmpro_getOption('pmpro_hide_decimals') == 'Yes'){
 		if ( ! empty( $pmpro_currency )
 		&& is_array( $pmpro_currencies[$pmpro_currency] )
@@ -90,11 +99,13 @@ function pclct_format_cost($cost) {
 			$cost = $parts[0];
 		}
 	}
+	
 	if(pmpro_getOption('pmpro_abbreviate_time') == 'Yes'){
 		$cost = str_replace("Year", "Yr", $cost);
 		$cost = str_replace("Week", "Wk", $cost);
 		$cost = str_replace("Month", "Mo", $cost);
 	}
+	
 	return $cost;
 }
 
