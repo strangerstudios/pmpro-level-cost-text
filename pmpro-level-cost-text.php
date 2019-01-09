@@ -66,7 +66,11 @@ function pclct_format_cost($cost) {
 	if ( is_numeric( $cost ) && function_exists( 'pmpro_round_price' ) ) {
 		$cost = pmpro_round_price( $cost );
 		
-		// TODO: Add zero decimals back if not set to hide decimals
+		// Format based on currency. This adds zeroes back after the decimal.
+		if ( function_exists( 'pmpro_get_currency') ) {
+			$currency = pmpro_get_currency();
+			$cost = number_format( $cost, $currency['decimals'], $currency['decimal_separator'], $currency['thousands_separator'] );
+		}
 	}
 	
 	if(pmpro_getOption('pmpro_hide_now') == 'Yes'){
