@@ -144,6 +144,9 @@ function pclct_apply_variables( $custom_text, $cost, $level ) {
 		pclct_format_cost($level->expiration_period)
 	);
 	
+	$search  = apply_filters('pclct_variables', $search);
+	$replace = apply_filters('pclct_variables_content', $replace, $cost, $level);
+
 	return str_replace($search, $replace, $custom_text);
 }
 
