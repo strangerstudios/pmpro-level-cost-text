@@ -60,6 +60,8 @@ add_filter('pmpro_custom_advanced_settings','pclct_cost_format_settings');
 
 //Adds format options specified in advanced settings
 function pclct_format_cost($cost) {
+	global $pmpro_currency, $pmpro_currencies;
+	
 	if(pmpro_getOption('pmpro_hide_now') == 'Yes'){
 		$cost = str_replace(" now", "", $cost);
 		
@@ -73,6 +75,21 @@ function pclct_format_cost($cost) {
 	}
 	if(pmpro_getOption('pmpro_use_slash') == 'Yes'){
 		$cost = str_replace(" per ", "/", $cost);
+	}
+	if(pmpro_getOption('pmpro_hide_decimals') == 'Yes'){
+		if ( ! empty( $pmpro_currency )
+		&& is_array( $pmpro_currencies[$pmpro_currency] )
+		&& isset( $pmpro_currencies[$pmpro_currency]['decimal_separator'] )
+		&& $pmpro_currencies[$pmpro_currency]['decimal_separator'] == ',' ) {
+			$decimal_separator = $pmpro_currencies[$pmpro_currency]['decimal_separator'];
+		} else {
+			$decimal_separator = '.';
+		}
+		
+		$parts = explode( $decimal_separator, $cost );
+		if ( ! empty( $parts[1] ) && $parts[1] == 0 ) {
+			$cost = $parts[0];
+		}
 	}
 	if(pmpro_getOption('pmpro_abbreviate_time') == 'Yes'){
 		$cost = str_replace("Year", "Yr", $cost);
@@ -102,43 +119,19 @@ function pclct_apply_variables( $custom_text, $cost, $level ) {
 		"!!expiration_period!!",
 	);
 	
-	$hide_decimals   = ( 'Yes' == pmpro_getOption( 'pmpro_hide_decimals' ) );
-	
-	// Format the initial payment based on WordPress locale settings
-	$initial_payment = (
-        true === $hide_decimals ?
-            pclct_format_cost( number_format_i18n( $level->initial_payment, 0 ) ) :
-            pclct_format_cost( number_format_i18n( $level->initial_payment, 2 ) )
-    );
-	
-	// Format the billing amount based on WordPress locale settings
-	$billing_amount = (
-        true === $hide_decimals ?
-            pclct_format_cost( number_format_i18n( $level->billing_amount,
-                0 ) ) :
-            pclct_format_cost( number_format_i18n( $level->billing_amount, 2 ) )
-	);
-	
-	// Format the trial amount based on WordPress locale settings
-	$trial_amount = (
-	    true === $hide_decimals ?
-            pclct_format_cost( number_format_i18n( $level->trial_amount, 0 ) ) :
-            pclct_format_cost( number_format_i18n( $level->trial_amount, 2 ) )
-    );
-	
 	$replace = array(
 		pclct_format_cost($cost),
 		pclct_format_cost(str_replace("The price for membership is ", "", $cost)),
 		$level->name,
 		$level->description,
-		$initial_payment,
-		$billing_amount,
+		pclct_format_cost($level->initial_payment),
+		pclct_format_cost($level->billing_amount),
 		$level->cycle_number,
 		pclct_format_cost($level->cycle_period),
 		$level->cycle_number,
 		pclct_format_cost($level->cycle_period),
 		$level->billing_limit,
-		$trial_amount,
+		pclct_format_cost($level->trial_amount),
 		$level->trial_limit,
 		$level->expiration_number,
 		pclct_format_cost($level->expiration_period)
