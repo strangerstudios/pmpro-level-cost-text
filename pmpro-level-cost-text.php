@@ -411,8 +411,9 @@ function plct_add_action_links($links) {
 		$new_links = array(
 			'<a href="' . admin_url('admin.php?page=pmpro-advancedsettings#LevelCostText') . '" title="' . esc_attr(__('Go to Level Cost Text Advanced Settings', 'pmpro-level-cost-text')) . '">' . __('Settings', 'pmpro-level-cost-text') . '</a>',
 		);
+		$links = array_merge( $new_links, $links );
 	}
-	return array_merge($new_links, $links);
+	return $links;
 }
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'plct_add_action_links');
 
