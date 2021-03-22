@@ -4,10 +4,18 @@ Plugin Name: Paid Memberships Pro - Custom Level Cost Text Add On
 Plugin URI: http://www.paidmembershipspro.com/wp/pmpro-custom-level-cost-text/
 Description: Modify the default level cost text per level, per discount code, or globally via advanced settings.
 Version: .3.2
+Requires at least: 4.6
 Author: Stranger Studios
 Author URI: http://www.strangerstudios.com
 Text Domain: pmpro-level-cost-text
+Domain Path: /languages
 */
+
+// Load text domain
+function pclct_load_textdomain() {
+	load_plugin_textdomain( 'pmpro-level-cost-text', false, basename( dirname( __FILE__ ) ) . '/languages' );
+}
+add_action( 'init', 'pclct_load_textdomain' );
 
 //Set up settings in Advanced Settings
 function pclct_cost_format_settings() {
@@ -104,10 +112,30 @@ function pclct_format_cost($cost) {
 		}
 	}
 	
-	if(pmpro_getOption('pmpro_abbreviate_time') == 'Yes'){
-		$cost = str_replace("Year", "Yr", $cost);
-		$cost = str_replace("Week", "Wk", $cost);
-		$cost = str_replace("Month", "Mo", $cost);
+	if ( pmpro_getOption( 'pmpro_abbreviate_time' ) == 'Yes' ) {
+		// Year
+		$cost = str_replace(
+			__( 'Year', 'pmpro-level-cost-text' ),
+			/* translators: abbreviation for Year */
+			__( 'Yr', 'pmpro-level-cost-text' ),
+			$cost
+		);
+
+		// Week
+		$cost = str_replace(
+			__( 'Week', 'pmpro-level-cost-text' ),
+			/* translators: abbreviation for Week */
+			__( 'Wk', 'pmpro-level-cost-text' ),
+			$cost
+		);
+
+		// Month
+		$cost = str_replace(
+			__( 'Month', 'pmpro-level-cost-text' ),
+			/* translators: abbreviation for Month */
+			__( 'Mo', 'pmpro-level-cost-text' ),
+			$cost
+		);
 	}
 	
 	return $cost;
@@ -425,27 +453,10 @@ function pclct_plugin_row_meta($links, $file) {
 	{
 		$new_links = array(
 			'<a href="' . esc_url('http://www.paidmembershipspro.com/add-ons/plugins-on-github/pmpro-custom-level-cost-text/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro-level-cost-text' ) ) . '">' . __( 'Docs', 'pmpro-level-cost-text' ) . '</a>',
-			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro' ) ) . '">' . __( 'Support', 'pmpro-level-cost-text' ) . '</a>',
+			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro-level-cost-text' ) ) . '">' . __( 'Support', 'pmpro-level-cost-text' ) . '</a>',
 		);
 		$links = array_merge($links, $new_links);
 	}
 	return $links;
 }
 add_filter('plugin_row_meta', 'pclct_plugin_row_meta', 10, 2);
-
-function pclct_load_textdomain() {
-	//get the locale
-	$locale = apply_filters("plugin_locale", get_locale(), "pmpro-level-cost-text");
-	$mofile = "pclct-" . $locale . ".mo";
-	
-	//paths to local (plugin) and global (WP) language files
-	$mofile_local  = plugin_dir_path(__FILE__)."/languages/" . $mofile;
-	$mofile_global = WP_LANG_DIR . '/pmpro/' . $mofile;
-	
-	//load global first
-	load_textdomain("pmpro-level-cost-text", $mofile_global);
-	
-	//load local second
-	load_textdomain("pmpro-level-cost-text", $mofile_local);
-}
-add_action("init", "pclct_load_textdomain", 1);

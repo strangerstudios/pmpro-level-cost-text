@@ -1,7 +1,7 @@
 === Paid Memberships Pro - Custom Level Cost Text Add On  ===
 Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, memberships, ecommerce, level cost
-Requires at least: 4.0
+Requires at least: 4.6
 Tested up to: 5.0.2
 Stable tag: .3.2
 
