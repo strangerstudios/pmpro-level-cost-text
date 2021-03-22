@@ -7,7 +7,14 @@ Version: .3.2
 Author: Stranger Studios
 Author URI: http://www.strangerstudios.com
 Text Domain: pmpro-level-cost-text
+Domain Path: /languages
 */
+
+// Load text domain
+function pclct_load_textdomain() {
+	load_plugin_textdomain( 'pmpro-level-cost-text', false, basename( dirname( __FILE__ ) ) . '/languages' );
+}
+add_action( 'init', 'pclct_load_textdomain' );
 
 //Set up settings in Advanced Settings
 function pclct_cost_format_settings() {
@@ -432,20 +439,3 @@ function pclct_plugin_row_meta($links, $file) {
 	return $links;
 }
 add_filter('plugin_row_meta', 'pclct_plugin_row_meta', 10, 2);
-
-function pclct_load_textdomain() {
-	//get the locale
-	$locale = apply_filters("plugin_locale", get_locale(), "pmpro-level-cost-text");
-	$mofile = "pclct-" . $locale . ".mo";
-	
-	//paths to local (plugin) and global (WP) language files
-	$mofile_local  = plugin_dir_path(__FILE__)."/languages/" . $mofile;
-	$mofile_global = WP_LANG_DIR . '/pmpro/' . $mofile;
-	
-	//load global first
-	load_textdomain("pmpro-level-cost-text", $mofile_global);
-	
-	//load local second
-	load_textdomain("pmpro-level-cost-text", $mofile_local);
-}
-add_action("init", "pclct_load_textdomain", 1);
