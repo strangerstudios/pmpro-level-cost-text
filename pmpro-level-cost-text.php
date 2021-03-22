@@ -111,10 +111,30 @@ function pclct_format_cost($cost) {
 		}
 	}
 	
-	if(pmpro_getOption('pmpro_abbreviate_time') == 'Yes'){
-		$cost = str_replace("Year", "Yr", $cost);
-		$cost = str_replace("Week", "Wk", $cost);
-		$cost = str_replace("Month", "Mo", $cost);
+	if ( pmpro_getOption( 'pmpro_abbreviate_time' ) == 'Yes' ) {
+		// Year
+		$cost = str_replace(
+			__( 'Year', 'pmpro-level-cost-text' ),
+			/* translators: abbreviation for Year */
+			__( 'Yr', 'pmpro-level-cost-text' ),
+			$cost
+		);
+
+		// Week
+		$cost = str_replace(
+			__( 'Week', 'pmpro-level-cost-text' ),
+			/* translators: abbreviation for Week */
+			__( 'Wk', 'pmpro-level-cost-text' ),
+			$cost
+		);
+
+		// Month
+		$cost = str_replace(
+			__( 'Month', 'pmpro-level-cost-text' ),
+			/* translators: abbreviation for Month */
+			__( 'Mo', 'pmpro-level-cost-text' ),
+			$cost
+		);
 	}
 	
 	return $cost;
@@ -432,7 +452,7 @@ function pclct_plugin_row_meta($links, $file) {
 	{
 		$new_links = array(
 			'<a href="' . esc_url('http://www.paidmembershipspro.com/add-ons/plugins-on-github/pmpro-custom-level-cost-text/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro-level-cost-text' ) ) . '">' . __( 'Docs', 'pmpro-level-cost-text' ) . '</a>',
-			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro' ) ) . '">' . __( 'Support', 'pmpro-level-cost-text' ) . '</a>',
+			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro-level-cost-text' ) ) . '">' . __( 'Support', 'pmpro-level-cost-text' ) . '</a>',
 		);
 		$links = array_merge($links, $new_links);
 	}
