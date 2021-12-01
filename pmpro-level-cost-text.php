@@ -89,18 +89,31 @@ function pclct_format_cost($cost) {
 		$cost = str_replace(" per ", "/", $cost);
 	}
 	
-	if(pmpro_getOption('pmpro_hide_decimals') == 'Yes'){
+	if ( pmpro_getOption( 'pmpro_hide_decimals' ) == 'Yes' ) {
+
+		// Default currency decimal separator
+		$decimal_separator = '.';
+
+		// Default currency decimals
+		$decimals = 2;
+
 		if ( ! empty( $pmpro_currency )
-		&& is_array( $pmpro_currencies[$pmpro_currency] )
-		&& isset( $pmpro_currencies[$pmpro_currency]['decimal_separator'] ) ) {
-			$decimal_separator = $pmpro_currencies[$pmpro_currency]['decimal_separator'];
-		} else {
-			$decimal_separator = '.';
+		&& is_array( $pmpro_currencies[ $pmpro_currency ] ) ) {
+			// Get currency decimal separator
+			if ( isset( $pmpro_currencies[ $pmpro_currency ]['decimal_separator'] )
+			&& $pmpro_currencies[ $pmpro_currency ]['decimal_separator'] !== $decimal_separator ) {
+				$decimal_separator = $pmpro_currencies[ $pmpro_currency ]['decimal_separator'];
+			}
+			// Get currency decimals
+			if ( isset( $pmpro_currencies[ $pmpro_currency ]['decimals'] )
+			&& $pmpro_currencies[ $pmpro_currency ]['decimals'] !== $decimals ) {
+				$decimals = $pmpro_currencies[ $pmpro_currency ]['decimals'];
+			}
 		}
-		
-		$parts = explode( $decimal_separator, $cost );
-		if ( ! empty( $parts[1] ) && $parts[1] == 0 ) {
-			$cost = $parts[0];
+
+		// Replace trailing zeroes only if currency has trailing decimals
+		if ( $decimals > 0 ) {
+			$cost = str_replace( $decimal_separator . str_repeat( '0', $decimals ), '', $cost );
 		}
 	}
 	
