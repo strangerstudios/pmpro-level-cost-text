@@ -80,9 +80,9 @@ function pclct_format_cost($cost) {
 	if(pmpro_getOption('pmpro_use_free') == 'Yes'){
 		global $pmpro_currency_symbol;
 		$cost = str_replace($pmpro_currency_symbol.'0.00', __('Free', "pmpro-level-cost-text"), $cost);
-		$cost = str_replace('0.00'.$pmpro_currency_symbol, __('Free', "pmpro-level-cost-text"), $cost);
+		$cost = str_replace(' 0.00'.$pmpro_currency_symbol, ' '.__('Free', "pmpro-level-cost-text"), $cost);
 		$cost = str_replace($pmpro_currency_symbol.'0,00', __('Free', "pmpro-level-cost-text"), $cost);
-		$cost = str_replace('0,00'.$pmpro_currency_symbol, __('Free', "pmpro-level-cost-text"), $cost);
+		$cost = str_replace(' 0,00'.$pmpro_currency_symbol, ' '.__('Free', "pmpro-level-cost-text"), $cost);
 	}
 	
 	if(pmpro_getOption('pmpro_use_slash') == 'Yes'){
