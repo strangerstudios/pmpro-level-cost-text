@@ -100,7 +100,7 @@ function pclct_format_cost($cost) {
 		
 		$parts = explode( $decimal_separator, $cost );
 		if ( ! empty( $parts[1] ) && strpos( $parts[1], '00' ) !== false ) {
-			$cost = $parts[0];
+			$cost = str_replace( '.00', '', $cost );
 		}
 	}
 	
