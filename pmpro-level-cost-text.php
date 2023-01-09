@@ -326,7 +326,7 @@ add_action("pmpro_discount_code_after_level_settings", "pclct_pmpro_discount_cod
 function pclct_pmpro_save_discount_code_level($code_id, $level_id)
 {
 	$all_levels_a = array_map( 'intval', $_REQUEST['all_levels'] );							//array of level ids checked for this code
-	$level_cost_text_a = $_REQUEST['level_cost_text'];			//level_cost_text for levels checked
+	$level_cost_text_a = sanitize_text_field( $_REQUEST['level_cost_text'] );			//level_cost_text for levels checked
 	
 	if(!empty($all_levels_a))
 	{
