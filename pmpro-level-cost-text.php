@@ -15,41 +15,41 @@ function pclct_cost_format_settings( $settings ) {
 		'pmpro_custom_level_cost_heading' => array(
 			'field_name' => 'pmpro_custom_level_cost_heading',
 			'field_type' => 'heading',
-        	'label' 	 => __('Level Cost Text Settings', "pmpro-level-cost-text"),
+        	'label' 	 => esc_html__('Level Cost Text Settings', "pmpro-level-cost-text"),
 		),
         'pmpro_hide_now' => array(
             'field_name' => 'pmpro_hide_now',
             'field_type' => 'select',
-            'label'		 => __('Remove "Now"', "pmpro-level-cost-text"),
-            'description' => __('Remove the word "now" from level cost text.', "pmpro-level-cost-text"),
+            'label'		 => esc_html__('Remove "Now"', "pmpro-level-cost-text"),
+            'description' => esc_html__('Remove the word "now" from level cost text.', "pmpro-level-cost-text"),
             'options' => array(0 => 'No', 1 => 'Yes'),
 		),
         'pmpro_use_free' => array(
             'field_name' => 'pmpro_use_free',
             'field_type' => 'select',
-            'label'		 => __('Use "Free"', "pmpro-level-cost-text"),
-            'description' => __('Use the word "Free" instead of $0.00', "pmpro-level-cost-text"),
+            'label'		 => esc_html__('Use "Free"', "pmpro-level-cost-text"),
+            'description' => esc_html__('Use the word "Free" instead of $0.00', "pmpro-level-cost-text"),
             'options' => array(0 => 'No', 1 => 'Yes'),
 		),
         'pmpro_use_slash' => array(
             'field_name' => 'pmpro_use_slash',
             'field_type' => 'select',
-            'label'		 => __('Use Slashes', "pmpro-level-cost-text"),
-            'description' => __('Use "/" instead of "per"', "pmpro-level-cost-text"),
+            'label'		 => esc_html__('Use Slashes', "pmpro-level-cost-text"),
+            'description' => esc_html__('Use "/" instead of "per"', "pmpro-level-cost-text"),
             'options' => array(0 => 'No', 1 => 'Yes'),
 		),
         'pmpro_hide_decimals' => array(
             'field_name' => 'pmpro_hide_decimals',
             'field_type' => 'select',
-            'label'		 => __('Hide Unnecessary Decimals', "pmpro-level-cost-text"),
-            'description' => __('Hide unnecessary decimals', "pmpro-level-cost-text"),
+            'label'		 => esc_html__('Hide Unnecessary Decimals', "pmpro-level-cost-text"),
+            'description' => esc_html__('Hide unnecessary decimals', "pmpro-level-cost-text"),
             'options' => array(0 => 'No', 1 => 'Yes'),
 		),
         'pmpro_abbreviate_time' => array(
             'field_name' => 'pmpro_abbreviate_time',
             'field_type' => 'select',
-            'label'		 => __('Abbreviate Billing Periods', "pmpro-level-cost-text"),
-            'description' => __('Abbreviate "Month", "Week", and "Year" to "Mo", "Wk", and "Yr"', "pmpro-level-cost-text"),
+            'label'		 => esc_html__('Abbreviate Billing Periods', "pmpro-level-cost-text"),
+            'description' => esc_html__('Abbreviate "Month", "Week", and "Year" to "Mo", "Wk", and "Yr"', "pmpro-level-cost-text"),
             'options' => array(0 => 'No', 1 => 'Yes'),
         )
 	);
@@ -165,31 +165,31 @@ function pclct_list_variables(){
     </style>
     <dl>
         <dt>!!default_cost_text!!</dt>
-		<dd><?php _e('Ex: "The price for membership is $20.00 now and then $10.00 per Year."', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('Ex: "The price for membership is $20.00 now and then $10.00 per Year."', "pmpro-level-cost-text"); ?></dd>
         <dt>!!short_cost_text!!</dt>
-		<dd><?php _e('Ex: "$20.00 now and then $10.00 per Year."', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('Ex: "$20.00 now and then $10.00 per Year."', "pmpro-level-cost-text"); ?></dd>
         <dt>!!level_name!!</dt>
-		<dd><?php _e('The name of the level the user is registering for.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('The name of the level the user is registering for.', "pmpro-level-cost-text"); ?></dd>
         <dt>!!level_description!!</dt>
-		<dd><?php _e('The description for the level the user is registering for.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('The description for the level the user is registering for.', "pmpro-level-cost-text"); ?></dd>
         <dt>!!initial_payment!!</dt>
-		<dd><?php _e('The initial payment for the level the user is registering for.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('The initial payment for the level the user is registering for.', "pmpro-level-cost-text"); ?></dd>
         <dt>!!billing_amount!!</dt>
-		<dd><?php _e('How much the user has to pay for a recurring subscription.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('How much the user has to pay for a recurring subscription.', "pmpro-level-cost-text"); ?></dd>
         <dt>!!cycle_number!!</dt>
-		<dd><?php _e('How many cycle periods must pass for one recurring subscription cycle to be complete.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('How many cycle periods must pass for one recurring subscription cycle to be complete.', "pmpro-level-cost-text"); ?></dd>
         <dt>!!cycle_period!!</dt>
-		<dd><?php _e('The unit of time cycle_number uses to measure.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('The unit of time cycle_number uses to measure.', "pmpro-level-cost-text"); ?></dd>
         <dt>!!billing_limit!!</dt>
-		<dd><?php _e('The total number of recurring billing cycles. 0 is infinite.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('The total number of recurring billing cycles. 0 is infinite.', "pmpro-level-cost-text"); ?></dd>
         <dt>!!trial_amount!!</dt>
-		<dd><?php _e('The cost of one recurring payment during the trial period.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('The cost of one recurring payment during the trial period.', "pmpro-level-cost-text"); ?></dd>
         <dt>!!trial_limit!!</dt>
-		<dd><?php _e('The number of billing cycles that are at the trial price.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('The number of billing cycles that are at the trial price.', "pmpro-level-cost-text"); ?></dd>
         <dt>!!expiration_number!!</dt>
-		<dd><?php _e('The number expiration periods until the membership expires.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('The number expiration periods until the membership expires.', "pmpro-level-cost-text"); ?></dd>
         <dt>!!expiration_period!!</dt>
-		<dd><?php _e('The unit of time expiration_number is measured in.', "pmpro-level-cost-text"); ?></dd>
+		<dd><?php esc_html_e('The unit of time expiration_number is measured in.', "pmpro-level-cost-text"); ?></dd>
     </dl>
 	<?php
 }
@@ -206,22 +206,22 @@ function pclct_pmpro_membership_level_after_other_settings()
 	else
 		$level_cost_text = "";
 	?>
-<h3 class="topborder"><?php _e("Custom Level Cost Text", "pmpro-level-cost-text"); ?></h3>
-<p><?php echo sprintf(__('Override the default level cost using the available placeholders or custom text. Make sure the prices in this text match your settings above. You can modify the format of the default text in %s', 'pmpro-level-cost-text'), '<a href="' . admin_url('admin.php?page=pmpro-advancedsettings') . '">' . __('Advanced Settings', 'pmpro-level-cost-text') . '.</a>');?></p>
+<h3 class="topborder"><?php esc_html_e("Custom Level Cost Text", "pmpro-level-cost-text"); ?></h3>
+<p><?php echo sprintf(__('Override the default level cost using the available placeholders or custom text. Make sure the prices in this text match your settings above. You can modify the format of the default text in %s', 'pmpro-level-cost-text'), '<a href="' . esc_url( admin_url('admin.php?page=pmpro-advancedsettings') ) . '">' . esc_html__('Advanced Settings', 'pmpro-level-cost-text') . '.</a>');?></p>
     <table class="form-table">
         <tbody>
         <tr>
-			<th scope="row" valign="top"><label for="level_cost_text"><?php _e('Level Cost Text', 'pmpro-level-cost-text');?>:</label></th>
+			<th scope="row" valign="top"><label for="level_cost_text"><?php esc_html_e('Level Cost Text', 'pmpro-level-cost-text');?>:</label></th>
             <td>
 				<textarea name="level_cost_text" rows="4" style="width: 100%;"><?php echo esc_textarea($level_cost_text);?></textarea>
-				<br /><small><?php echo sprintf(__('Leave blank to use the default text generated by your %s', 'pmpro-level-cost-text'), '<a href="' . admin_url('admin.php?page=pmpro-advancedsettings') . '">' . __('Advanced Settings', 'pmpro-level-cost-text') . '.</a>');?></small>
+				<br /><small><?php echo sprintf(__('Leave blank to use the default text generated by your %s', 'pmpro-level-cost-text'), '<a href="' . esc_url( admin_url('admin.php?page=pmpro-advancedsettings') ) . '">' . esc_html__('Advanced Settings', 'pmpro-level-cost-text') . '.</a>');?></small>
             </td>
         </tr>
         <tr>
 			<th scope="row" valign="top"><label for="level_cost_text"><label for="variable_references"><?php _e('Placeholder&nbsp;Reference', 'pmpro-level-cost-text'); ?>:</label></th>
             <td>
 				<div class="template_reference" style="background: #FAFAFA; border: 1px solid #CCC; color: #666; padding: 5px;">
-					<p><em><?php _e('Insert these variables in the level cost text field above.', 'pmpro-level-cost-text'); ?></em></p>
+					<p><em><?php esc_html_e('Insert these variables in the level cost text field above.', 'pmpro-level-cost-text'); ?></em></p>
 					<?php pclct_list_variables(); ?>
                 </div>
             </td>
@@ -299,19 +299,19 @@ function pclct_pmpro_discount_code_after_level_settings($code_id, $level)
         <tr>
             <td>
        			<tr>
-					<th scope="row" valign="top"><label for="level_cost_text"><?php _e('Level Cost Text', 'pmpro-level-cost-text');?>:</label></th>
+					<th scope="row" valign="top"><label for="level_cost_text"><?php esc_html_e('Level Cost Text', 'pmpro-level-cost-text');?>:</label></th>
             		<td>
 						<textarea name="level_cost_text[]" rows="4" style="width: 100%;"><?php echo esc_textarea($level_cost_text);?></textarea>
-						<br /><small><?php echo sprintf(__('Leave blank to use the default text generated by your %s', 'pmpro-level-cost-text'), '<a href="' . admin_url('admin.php?page=pmpro-advancedsettings') . '">' . __('Advanced Settings', 'pmpro-level-cost-text') . '.</a>');?></small>
+						<br /><small><?php echo sprintf(__('Leave blank to use the default text generated by your %s', 'pmpro-level-cost-text'), '<a href="' . esc_url( admin_url('admin.php?page=pmpro-advancedsettings') ) . '">' . esc_html_e('Advanced Settings', 'pmpro-level-cost-text') . '.</a>');?></small>
             		</td>
         		</tr>
         	</td>
         </tr>
         <tr>
-		<th scope="row" valign="top"><label for="level_cost_text"><label for="variable_references"><?php _e('Placeholder&nbsp;Reference', 'pmpro-level-cost-text'); ?>:</label></th>
+		<th scope="row" valign="top"><label for="level_cost_text"><label for="variable_references"><?php esc_html_e('Placeholder&nbsp;Reference', 'pmpro-level-cost-text'); ?>:</label></th>
             <td>
 				<div class="template_reference" style="background: #FAFAFA; border: 1px solid #CCC; color: #666; padding: 5px;">
-					<p><em><?php _e('Insert these variables in the level cost text field above.', 'pmpro-level-cost-text'); ?></em></p>
+					<p><em><?php esc_html_e('Insert these variables in the level cost text field above.', 'pmpro-level-cost-text'); ?></em></p>
 					<?php pclct_list_variables(); ?>
                 </div>
             </td>
@@ -326,7 +326,7 @@ add_action("pmpro_discount_code_after_level_settings", "pclct_pmpro_discount_cod
 function pclct_pmpro_save_discount_code_level($code_id, $level_id)
 {
 	$all_levels_a = array_map( 'intval', $_REQUEST['all_levels'] );							//array of level ids checked for this code
-	$level_cost_text_a = $_REQUEST['level_cost_text'];			//level_cost_text for levels checked
+	$level_cost_text_a = sanitize_text_field( $_REQUEST['level_cost_text'] );			//level_cost_text for levels checked
 	
 	if(!empty($all_levels_a))
 	{
@@ -345,7 +345,7 @@ function pclct_pmpro_level_cost_text_code($cost, $level)
 	if(!empty($level->code_id))
 		$code_id = $level->code_id;
 	elseif(!empty($_REQUEST['discount_code']))
-		$code_id = $wpdb->get_var($wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", $_REQUEST['discount_code'] ) );
+		$code_id = $wpdb->get_var($wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", sanitize_text_field( $_REQUEST['discount_code'] ) ) );
 	else
 		$code_id = false;
 	
@@ -409,7 +409,7 @@ function plct_add_action_links($links) {
 	if(current_user_can($cap))
 	{
 		$new_links = array(
-			'<a href="' . admin_url('admin.php?page=pmpro-advancedsettings#LevelCostText') . '" title="' . esc_attr(__('Go to Level Cost Text Advanced Settings', 'pmpro-level-cost-text')) . '">' . __('Settings', 'pmpro-level-cost-text') . '</a>',
+			'<a href="' . esc_url( admin_url('admin.php?page=pmpro-advancedsettings#LevelCostText') ) . '" title="' . esc_attr(__('Go to Level Cost Text Advanced Settings', 'pmpro-level-cost-text')) . '">' . esc_html__('Settings', 'pmpro-level-cost-text') . '</a>',
 		);
 		$links = array_merge( $links, $new_links );
 	}
@@ -424,8 +424,8 @@ function pclct_plugin_row_meta($links, $file) {
 	if(strpos($file, 'pmpro-level-cost-text.php') !== false)
 	{
 		$new_links = array(
-			'<a href="' . esc_url('http://www.paidmembershipspro.com/add-ons/plugins-on-github/pmpro-custom-level-cost-text/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro-level-cost-text' ) ) . '">' . __( 'Docs', 'pmpro-level-cost-text' ) . '</a>',
-			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro' ) ) . '">' . __( 'Support', 'pmpro-level-cost-text' ) . '</a>',
+			'<a href="' . esc_url('http://www.paidmembershipspro.com/add-ons/plugins-on-github/pmpro-custom-level-cost-text/')  . '" title="' . esc_attr__( 'View Documentation', 'pmpro-level-cost-text' ) . '">' . esc_html__( 'Docs', 'pmpro-level-cost-text' ) . '</a>',
+			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr__( 'Visit Customer Support Forum', 'pmpro-level-cost-text' ) . '">' . esc_html__( 'Support', 'pmpro-level-cost-text' ) . '</a>',
 		);
 		$links = array_merge($links, $new_links);
 	}
