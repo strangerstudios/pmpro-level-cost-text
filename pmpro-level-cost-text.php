@@ -424,8 +424,8 @@ function pclct_plugin_row_meta($links, $file) {
 	if(strpos($file, 'pmpro-level-cost-text.php') !== false)
 	{
 		$new_links = array(
-			'<a href="' . esc_url('http://www.paidmembershipspro.com/add-ons/plugins-on-github/pmpro-custom-level-cost-text/')  . '" title="' . esc_attr( __( 'View Documentation', 'pmpro-level-cost-text' ) ) . '">' . __( 'Docs', 'pmpro-level-cost-text' ) . '</a>',
-			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr( __( 'Visit Customer Support Forum', 'pmpro' ) ) . '">' . __( 'Support', 'pmpro-level-cost-text' ) . '</a>',
+			'<a href="' . esc_url('http://www.paidmembershipspro.com/add-ons/plugins-on-github/pmpro-custom-level-cost-text/')  . '" title="' . esc_attr__( 'View Documentation', 'pmpro-level-cost-text' ) . '">' . esc_html__( 'Docs', 'pmpro-level-cost-text' ) . '</a>',
+			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr__( 'Visit Customer Support Forum', 'pmpro-level-cost-text' ) . '">' . esc_html__( 'Support', 'pmpro-level-cost-text' ) . '</a>',
 		);
 		$links = array_merge($links, $new_links);
 	}
