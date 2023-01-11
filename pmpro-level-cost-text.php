@@ -345,7 +345,7 @@ function pclct_pmpro_level_cost_text_code($cost, $level)
 	if(!empty($level->code_id))
 		$code_id = $level->code_id;
 	elseif(!empty($_REQUEST['discount_code']))
-		$code_id = $wpdb->get_var($wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", esc_sql( $_REQUEST['discount_code'] ) ) );
+		$code_id = $wpdb->get_var($wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", sanitize_text_field( $_REQUEST['discount_code'] ) ) );
 	else
 		$code_id = false;
 	
