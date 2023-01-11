@@ -10,7 +10,7 @@ Text Domain: pmpro-level-cost-text
 */
 
 //Set up settings in Advanced Settings
-function pclct_cost_format_settings() {
+function pclct_cost_format_settings( $settings ) {
 	$custom_fields = array(
 		'pmpro_custom_level_cost_heading' => array(
 			'field_name' => 'pmpro_custom_level_cost_heading',
@@ -54,9 +54,9 @@ function pclct_cost_format_settings() {
         )
 	);
 	
-	return $custom_fields;
+	return array_merge( $settings, $custom_fields );
 }
-add_filter('pmpro_custom_advanced_settings','pclct_cost_format_settings');
+add_filter( 'pmpro_custom_advanced_settings','pclct_cost_format_settings', 10, 1 );
 
 //Adds format options specified in advanced settings
 function pclct_format_cost($cost) {
@@ -79,10 +79,10 @@ function pclct_format_cost($cost) {
 	
 	if(pmpro_getOption('pmpro_use_free') == 'Yes'){
 		global $pmpro_currency_symbol;
-		$cost = str_replace($pmpro_currency_symbol.'0.00', esc_html__('Free', "pmpro-level-cost-text"), $cost);
-		$cost = str_replace('0.00'.$pmpro_currency_symbol, esc_html__('Free', "pmpro-level-cost-text"), $cost);
-		$cost = str_replace($pmpro_currency_symbol.'0,00', esc_html__('Free', "pmpro-level-cost-text"), $cost);
-		$cost = str_replace('0,00'.$pmpro_currency_symbol, esc_html__('Free', "pmpro-level-cost-text"), $cost);
+		$cost = str_replace($pmpro_currency_symbol.'0.00', __('Free', "pmpro-level-cost-text"), $cost);
+		$cost = str_replace(' 0.00'.$pmpro_currency_symbol, ' '.__('Free', "pmpro-level-cost-text"), $cost); //Space added to avoid replacing 0.00 in 10.00 etc.
+		$cost = str_replace($pmpro_currency_symbol.'0,00', __('Free', "pmpro-level-cost-text"), $cost);
+		$cost = str_replace(' 0,00'.$pmpro_currency_symbol, ' '.__('Free', "pmpro-level-cost-text"), $cost); //Space added to avoid replacing 0.00 in 10.00 etc.
 	}
 	
 	if(pmpro_getOption('pmpro_use_slash') == 'Yes'){
@@ -99,8 +99,8 @@ function pclct_format_cost($cost) {
 		}
 		
 		$parts = explode( $decimal_separator, $cost );
-		if ( ! empty( $parts[1] ) && $parts[1] == 0 ) {
-			$cost = $parts[0];
+		if ( ! empty( $parts[1] ) && strpos( $parts[1], '00' ) !== false ) {
+			$cost = str_replace( $decimal_separator . '00 ', ' ' , $cost ); //Add a space here to ensure we're getting the decimal place.
 		}
 	}
 	
@@ -411,7 +411,7 @@ function plct_add_action_links($links) {
 		$new_links = array(
 			'<a href="' . esc_url( admin_url('admin.php?page=pmpro-advancedsettings#LevelCostText') ) . '" title="' . esc_attr(__('Go to Level Cost Text Advanced Settings', 'pmpro-level-cost-text')) . '">' . esc_html__('Settings', 'pmpro-level-cost-text') . '</a>',
 		);
-		$links = array_merge( $new_links, $links );
+		$links = array_merge( $links, $new_links );
 	}
 	return $links;
 }
