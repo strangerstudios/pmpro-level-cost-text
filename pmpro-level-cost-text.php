@@ -10,7 +10,7 @@ Text Domain: pmpro-level-cost-text
 */
 
 //Set up settings in Advanced Settings
-function pclct_cost_format_settings() {
+function pclct_cost_format_settings( $settings ) {
 	$custom_fields = array(
 		'pmpro_custom_level_cost_heading' => array(
 			'field_name' => 'pmpro_custom_level_cost_heading',
@@ -54,9 +54,9 @@ function pclct_cost_format_settings() {
         )
 	);
 	
-	return $custom_fields;
+	return array_merge( $settings, $custom_fields );
 }
-add_filter('pmpro_custom_advanced_settings','pclct_cost_format_settings');
+add_filter( 'pmpro_custom_advanced_settings','pclct_cost_format_settings', 10, 1 );
 
 //Adds format options specified in advanced settings
 function pclct_format_cost($cost) {
