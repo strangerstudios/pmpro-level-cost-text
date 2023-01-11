@@ -99,8 +99,8 @@ function pclct_format_cost($cost) {
 		}
 		
 		$parts = explode( $decimal_separator, $cost );
-		if ( ! empty( $parts[1] ) && $parts[1] == 0 ) {
-			$cost = $parts[0];
+		if ( ! empty( $parts[1] ) && strpos( $parts[1], '00' ) !== false ) {
+			$cost = str_replace( $decimal_separator . '00 ', ' ' , $cost ); //Add a space here to ensure we're getting the decimal place.
 		}
 	}
 	
