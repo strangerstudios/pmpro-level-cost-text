@@ -259,6 +259,14 @@ function pclct_pmpro_level_cost_text_levels($cost, $level)
 }
 add_filter("pmpro_level_cost_text", "pclct_pmpro_level_cost_text_levels", 15, 2);		//priority 15, so discount code text will override this
 
+/**
+ * Removes the expiration text if custom level cost text has been set.
+ * 
+ * @param $expiration_text string The current expiration text string
+ * @param $levels array The levels that the expiration text are used on
+ * 
+ * @since TBD
+ */
 function pclct_remove_expiration_text( $expiration_text, $levels ) {
 
 	if( empty( $levels ) ) {
