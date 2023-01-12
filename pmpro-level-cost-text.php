@@ -3,7 +3,7 @@
 Plugin Name: Paid Memberships Pro - Custom Level Cost Text Add On
 Plugin URI: https://www.paidmembershipspro.com/add-ons/pmpro-custom-level-cost-text/
 Description: Modify the default level cost text per level, per discount code, or globally via advanced settings.
-Version: .3.2
+Version: 0.4
 Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com/
 Text Domain: pmpro-level-cost-text
@@ -274,7 +274,7 @@ add_filter("pmpro_level_cost_text", "pclct_pmpro_level_cost_text_levels", 15, 2)
  * @param $expiration_text string The current expiration text string
  * @param $levels array The levels that the expiration text are used on
  * 
- * @since TBD
+ * @since 0.4
  */
 function pclct_remove_expiration_text( $expiration_text, $levels ) {
 

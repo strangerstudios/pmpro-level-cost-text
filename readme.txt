@@ -2,8 +2,8 @@
 Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, memberships, ecommerce, level cost
 Requires at least: 5.2
-Tested up to: 5.9
-Stable tag: .3.2
+Tested up to: 6.1
+Stable tag: 0.4
 
 Modify the default level cost text per level, per discount code, or globally via advanced settings.
 
@@ -22,7 +22,14 @@ This plugin requires Paid Memberships Pro.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Edit a Membership Level, Discount Code or the Memberships > Advanced Settings page to modify generated level cost text.
 
-== Changelog = 
+== Changelog =
+= 0.4 - 2022-01-12 =
+* ENHANCEMENT: Hide the expiration text when Custom Level Cost Text is used for a level. Give full control to the custom text.
+* ENHANCEMENT: General improvements to sanitization and escaping of text fields/values.
+* BUG FIX/ENHANCEMENT: Improved logic for removing decimal values.
+* BUG FIX: Fixed an issue when setting .00 to "Free" would incorrectly change the level cost text to "Free" when the level cost was not 0.00 (@mircobabini).
+* BUG FIX: Fixed a fatal error for plugin row meta. This would sometimes fatal error on plugin activation for certain PHP versions/sites.
+
 = .3.2 =
 * BUG FIX: Didn't display billing amount, initial payment and trial amount values correctly.
 * BUG FIX: Better handling of non-US currencies.
