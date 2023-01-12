@@ -269,9 +269,10 @@ add_filter("pmpro_level_cost_text", "pclct_pmpro_level_cost_text_levels", 15, 2)
  */
 function pclct_remove_expiration_text( $expiration_text, $levels ) {
 
-	if( empty( $levels ) ) {
+	if ( empty( $levels ) ) {
 		return $expiration_text;
 	};
+	
 	foreach( $levels as $level ) {
 		$custom_text = pmpro_getCustomLevelCostText( $level );
 		if ( ! empty( $custom_text ) ) {
