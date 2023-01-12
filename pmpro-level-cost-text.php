@@ -9,47 +9,56 @@ Author URI: https://www.paidmembershipspro.com/
 Text Domain: pmpro-level-cost-text
 */
 
-//Set up settings in Advanced Settings
+/**
+ * Add settings for Custom Level Cost Text to the "Advanced" settings page in Paid Memberships Pro.
+ * 
+ * NOTE: Data is sanitized in Paid Memberships Pro, so we do not need to escape in this function.
+ *
+ * @param array $settings The settings array to be added to PMPro's advanced settings page.
+ * @return array $all_settings The merged settings for the Advanced Settings page in PMPro.
+ * 
+ * @since 0.1
+ */
 function pclct_cost_format_settings( $settings ) {
 	$custom_fields = array(
 		'pmpro_custom_level_cost_heading' => array(
 			'field_name' => 'pmpro_custom_level_cost_heading',
 			'field_type' => 'heading',
-        	'label' 	 => esc_html__('Level Cost Text Settings', "pmpro-level-cost-text"),
+        	'label' 	 => __('Level Cost Text Settings', "pmpro-level-cost-text"),
 		),
         'pmpro_hide_now' => array(
             'field_name' => 'pmpro_hide_now',
             'field_type' => 'select',
-            'label'		 => esc_html__('Remove "Now"', "pmpro-level-cost-text"),
-            'description' => esc_html__('Remove the word "now" from level cost text.', "pmpro-level-cost-text"),
+            'label'		 => __('Remove "Now"', "pmpro-level-cost-text"),
+            'description' => __('Remove the word "now" from level cost text.', "pmpro-level-cost-text"),
             'options' => array(0 => 'No', 1 => 'Yes'),
 		),
         'pmpro_use_free' => array(
             'field_name' => 'pmpro_use_free',
             'field_type' => 'select',
-            'label'		 => esc_html__('Use "Free"', "pmpro-level-cost-text"),
-            'description' => esc_html__('Use the word "Free" instead of $0.00', "pmpro-level-cost-text"),
+            'label'		 => __('Use "Free"', "pmpro-level-cost-text"),
+            'description' => __('Use the word "Free" instead of $0.00', "pmpro-level-cost-text"),
             'options' => array(0 => 'No', 1 => 'Yes'),
 		),
         'pmpro_use_slash' => array(
             'field_name' => 'pmpro_use_slash',
             'field_type' => 'select',
-            'label'		 => esc_html__('Use Slashes', "pmpro-level-cost-text"),
-            'description' => esc_html__('Use "/" instead of "per"', "pmpro-level-cost-text"),
+            'label'		 => __('Use Slashes', "pmpro-level-cost-text"),
+            'description' => __('Use "/" instead of "per"', "pmpro-level-cost-text"),
             'options' => array(0 => 'No', 1 => 'Yes'),
 		),
         'pmpro_hide_decimals' => array(
             'field_name' => 'pmpro_hide_decimals',
             'field_type' => 'select',
-            'label'		 => esc_html__('Hide Unnecessary Decimals', "pmpro-level-cost-text"),
-            'description' => esc_html__('Hide unnecessary decimals', "pmpro-level-cost-text"),
+            'label'		 => __('Hide Unnecessary Decimals', "pmpro-level-cost-text"),
+            'description' => __('Hide unnecessary decimals', "pmpro-level-cost-text"),
             'options' => array(0 => 'No', 1 => 'Yes'),
 		),
         'pmpro_abbreviate_time' => array(
             'field_name' => 'pmpro_abbreviate_time',
             'field_type' => 'select',
-            'label'		 => esc_html__('Abbreviate Billing Periods', "pmpro-level-cost-text"),
-            'description' => esc_html__('Abbreviate "Month", "Week", and "Year" to "Mo", "Wk", and "Yr"', "pmpro-level-cost-text"),
+            'label'		 => __('Abbreviate Billing Periods', "pmpro-level-cost-text"),
+            'description' => __('Abbreviate "Month", "Week", and "Year" to "Mo", "Wk", and "Yr"', "pmpro-level-cost-text"),
             'options' => array(0 => 'No', 1 => 'Yes'),
         )
 	);
@@ -100,7 +109,7 @@ function pclct_format_cost($cost) {
 		
 		$parts = explode( $decimal_separator, $cost );
 		if ( ! empty( $parts[1] ) && strpos( $parts[1], '00' ) !== false ) {
-			$cost = str_replace( $decimal_separator . '00 ', ' ' , $cost ); //Add a space here to ensure we're getting the decimal place.
+			$cost = str_replace( array( $decimal_separator . '00 ', $decimal_separator . '00/' ), array( ' ', '/' ) , $cost ); //Support for "per" and "slash" options in the cost text.
 		}
 	}
 	
@@ -446,8 +455,7 @@ add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'plct_add_action_
  * Add links to the plugin row meta
  */
 function pclct_plugin_row_meta($links, $file) {
-	if(strpos($file, 'pmpro-level-cost-text.php') !== false)
-	{
+	if( strpos( $file, 'pmpro-level-cost-text.php' ) !== false) {
 		$new_links = array(
 			'<a href="' . esc_url('http://www.paidmembershipspro.com/add-ons/plugins-on-github/pmpro-custom-level-cost-text/')  . '" title="' . esc_attr__( 'View Documentation', 'pmpro-level-cost-text' ) . '">' . esc_html__( 'Docs', 'pmpro-level-cost-text' ) . '</a>',
 			'<a href="' . esc_url('http://paidmembershipspro.com/support/') . '" title="' . esc_attr__( 'Visit Customer Support Forum', 'pmpro-level-cost-text' ) . '">' . esc_html__( 'Support', 'pmpro-level-cost-text' ) . '</a>',
