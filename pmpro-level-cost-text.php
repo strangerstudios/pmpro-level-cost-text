@@ -248,14 +248,39 @@ function pclct_pmpro_level_cost_text_levels($cost, $level)
 	if(!empty($custom_text))
 	{
 		$cost = pclct_apply_variables($custom_text, $cost, $level);
+		//Removes expiration text when using custom level text
+		add_filter( 'pmpro_levels_expiration_text', 'pclct_remove_expiration_text', 10, 2 );
 	}
 	else{
 		$cost = pclct_format_cost($cost);
-	}
+	}	
 	
 	return $cost;
 }
 add_filter("pmpro_level_cost_text", "pclct_pmpro_level_cost_text_levels", 15, 2);		//priority 15, so discount code text will override this
+
+/**
+ * Removes the expiration text if custom level cost text has been set.
+ * 
+ * @param $expiration_text string The current expiration text string
+ * @param $levels array The levels that the expiration text are used on
+ * 
+ * @since TBD
+ */
+function pclct_remove_expiration_text( $expiration_text, $levels ) {
+
+	if ( empty( $levels ) ) {
+		return $expiration_text;
+	};
+	
+	foreach( $levels as $level ) {
+		$custom_text = pmpro_getCustomLevelCostText( $level );
+		if ( ! empty( $custom_text ) ) {
+			return;
+		}
+	}
+	return $expiration_text;
+}
 
 /*	
 	This function will save a level_cost_text for a discount code into an array stored in pmpro_code_level_cost_text.
