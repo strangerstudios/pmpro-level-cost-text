@@ -368,7 +368,7 @@ function pclct_pmpro_save_discount_code_level( $code_id, $level_id ) {
 
 	// If we updated level cost text, save the values.
 	if ( ! empty( $all_levels_a ) ) {
-		// Find the location of  the level in the array.
+		// Find the location of the level in the array.
 		$key = array_search( $level_id, $all_levels_a );
 
 		// Add level cost text for this level.
