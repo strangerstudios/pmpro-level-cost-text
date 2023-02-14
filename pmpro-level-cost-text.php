@@ -356,19 +356,26 @@ function pclct_pmpro_discount_code_after_level_settings($code_id, $level)
 }
 add_action("pmpro_discount_code_after_level_settings", "pclct_pmpro_discount_code_after_level_settings", 10, 2);
 
-//save level cost text for the code when the code is saved/added
-function pclct_pmpro_save_discount_code_level($code_id, $level_id)
-{
-	$all_levels_a = array_map( 'intval', $_REQUEST['all_levels'] );							//array of level ids checked for this code
-	$level_cost_text_a = array_map( 'wp_kses_post', $_REQUEST['level_cost_text'] );			//level_cost_text for levels checked
+/**
+ * Save level cost text for a discount code when it is saved/added.
+ */
+function pclct_pmpro_save_discount_code_level( $code_id, $level_id ) {
+	// Get the array of level ids checked for this code.
+	$all_levels_a = array_map( 'intval', $_REQUEST['all_levels'] );
 
-	if(!empty($all_levels_a))
-	{
-		$key = array_search($level_id, $all_levels_a);				//which level is it in the list?
-		pmpro_saveCodeCustomLevelCostText($code_id, $level_id, wp_unslash( $level_cost_text_a[$key] ) );			//add level cost text for this level
+	// Get the level_cost_text field for levels checked.
+	$level_cost_text_a = array_map( 'wp_kses_post', $_REQUEST['level_cost_text'] );
+
+	// If we updated level cost text, save the values.
+	if ( ! empty( $all_levels_a ) ) {
+		// Find the location of  the level in the array.
+		$key = array_search( $level_id, $all_levels_a );
+
+		// Add level cost text for this level.
+		pmpro_saveCodeCustomLevelCostText( $code_id, $level_id, wp_unslash( $level_cost_text_a[$key] ) );
 	}
 }
-add_action("pmpro_save_discount_code_level", "pclct_pmpro_save_discount_code_level", apply_filters('pclct_pmpro_level_cost_text_priority', 99), 2);
+add_action( 'pmpro_save_discount_code_level', 'pclct_pmpro_save_discount_code_level', apply_filters( 'pclct_pmpro_level_cost_text_priority', 99 ), 2 );
 
 //update level cost text based on the discount code used
 function pclct_pmpro_level_cost_text_code($cost, $level)
