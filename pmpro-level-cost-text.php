@@ -360,12 +360,12 @@ add_action("pmpro_discount_code_after_level_settings", "pclct_pmpro_discount_cod
 function pclct_pmpro_save_discount_code_level($code_id, $level_id)
 {
 	$all_levels_a = array_map( 'intval', $_REQUEST['all_levels'] );							//array of level ids checked for this code
-	$level_cost_text_a = sanitize_text_field( $_REQUEST['level_cost_text'] );			//level_cost_text for levels checked
-	
+	$level_cost_text_a = array_map( 'wp_kses_post', $_REQUEST['level_cost_text'] );			//level_cost_text for levels checked
+
 	if(!empty($all_levels_a))
 	{
 		$key = array_search($level_id, $all_levels_a);				//which level is it in the list?
-		pmpro_saveCodeCustomLevelCostText($code_id, $level_id, wp_kses_post( wp_unslash( $level_cost_text_a[$key] ) ) );			//add level cost text for this level
+		pmpro_saveCodeCustomLevelCostText($code_id, $level_id, wp_unslash( $level_cost_text_a[$key] ) );			//add level cost text for this level
 	}
 }
 add_action("pmpro_save_discount_code_level", "pclct_pmpro_save_discount_code_level", apply_filters('pclct_pmpro_level_cost_text_priority', 99), 2);
