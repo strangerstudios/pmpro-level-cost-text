@@ -82,11 +82,11 @@ function pclct_format_cost($cost) {
 		}
 	}
 	
-	if(pmpro_getOption('pmpro_hide_now') == 'Yes'){
+	if(get_option('pmpro_pmpro_hide_now') == 'Yes'){
 		$cost = str_replace(" now", "", $cost);
 	}
 	
-	if(pmpro_getOption('pmpro_use_free') == 'Yes'){
+	if(get_option('pmpro_pmpro_use_free') == 'Yes'){
 		global $pmpro_currency_symbol;
 		$cost = str_replace($pmpro_currency_symbol.'0.00', __('Free', "pmpro-level-cost-text"), $cost);
 		$cost = str_replace(' 0.00'.$pmpro_currency_symbol, ' '.__('Free', "pmpro-level-cost-text"), $cost); //Space added to avoid replacing 0.00 in 10.00 etc.
@@ -94,11 +94,11 @@ function pclct_format_cost($cost) {
 		$cost = str_replace(' 0,00'.$pmpro_currency_symbol, ' '.__('Free', "pmpro-level-cost-text"), $cost); //Space added to avoid replacing 0.00 in 10.00 etc.
 	}
 	
-	if(pmpro_getOption('pmpro_use_slash') == 'Yes'){
+	if(get_option('pmpro_pmpro_use_slash') == 'Yes'){
 		$cost = str_replace(" per ", "/", $cost);
 	}
 	
-	if(pmpro_getOption('pmpro_hide_decimals') == 'Yes'){
+	if(get_option('pmpro_pmpro_hide_decimals') == 'Yes'){
 		if ( ! empty( $pmpro_currency )
 		&& is_array( $pmpro_currencies[$pmpro_currency] )
 		&& isset( $pmpro_currencies[$pmpro_currency]['decimal_separator'] ) ) {
@@ -113,7 +113,7 @@ function pclct_format_cost($cost) {
 		}
 	}
 	
-	if(pmpro_getOption('pmpro_abbreviate_time') == 'Yes'){
+	if(get_option('pmpro_pmpro_abbreviate_time') == 'Yes'){
 		$cost = str_replace("Year", "Yr", $cost);
 		$cost = str_replace("Week", "Wk", $cost);
 		$cost = str_replace("Month", "Mo", $cost);
