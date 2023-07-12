@@ -215,7 +215,7 @@ function pclct_pmpro_membership_level_after_other_settings()
 	else
 		$level_cost_text = "";
 	?>
-<h3 class="topborder"><?php esc_html_e("Custom Level Cost Text", "pmpro-level-cost-text"); ?></h3>
+<h2 class="topborder"><?php esc_html_e("Custom Level Cost Text", "pmpro-level-cost-text"); ?></h2>
 <p><?php echo sprintf(__('Override the default level cost using the available placeholders or custom text. Make sure the prices in this text match your settings above. You can modify the format of the default text in %s', 'pmpro-level-cost-text'), '<a href="' . esc_url( admin_url('admin.php?page=pmpro-advancedsettings') ) . '">' . esc_html__('Advanced Settings', 'pmpro-level-cost-text') . '.</a>');?></p>
     <table class="form-table">
         <tbody>
