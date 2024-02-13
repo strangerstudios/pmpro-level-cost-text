@@ -109,7 +109,7 @@ function pclct_format_cost($cost) {
 		
 		$parts = explode( $decimal_separator, $cost );
 		if ( ! empty( $parts[1] ) && strpos( $parts[1], '00' ) !== false ) {
-			$cost = str_replace( array( $decimal_separator . '00 ', $decimal_separator . '00/' ), array( ' ', '/' ) , $cost ); //Support for "per" and "slash" options in the cost text.
+			$cost = str_replace( array( $decimal_separator . '00', $decimal_separator . '00/' ), array( '', '/' ) , $cost ); //Support for "per" and "slash" options in the cost text.
 		}
 	}
 	
