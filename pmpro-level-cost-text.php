@@ -383,12 +383,18 @@ function pclct_pmpro_level_cost_text_code($cost, $level)
 	global $wpdb;
 	
 	//check if a discount code is being used
-	if(!empty($level->code_id))
+	if ( ! empty( $level->code_id ) ) {
 		$code_id = $level->code_id;
-	elseif(!empty($_REQUEST['discount_code']))
-		$code_id = $wpdb->get_var($wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", sanitize_text_field( $_REQUEST['discount_code'] ) ) );
-	else
+	} elseif ( ! empty( $_REQUEST['pmpro_discount_code'] ) ) {
+		$code_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", sanitize_text_field( $_REQUEST['pmpro_discount_code'] ) ) );
+	} elseif ( ! empty( $_REQUEST['discount_code'] ) ) {
+		$code_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", sanitize_text_field( $_REQUEST['discount_code'] ) ) );
+	} elseif ( ! empty( $discount_code ) ) {
+		global $discount_code;
+		$code_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", sanitize_text_field( $discount_code ) ) );
+	} else {
 		$code_id = false;
+	}
 	
 	//used?
 	if(!empty($code_id))
