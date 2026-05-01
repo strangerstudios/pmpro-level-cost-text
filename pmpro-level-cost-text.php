@@ -389,9 +389,6 @@ function pclct_pmpro_level_cost_text_code($cost, $level)
 		$code_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", sanitize_text_field( $_REQUEST['pmpro_discount_code'] ) ) );
 	} elseif ( ! empty( $_REQUEST['discount_code'] ) ) {
 		$code_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", sanitize_text_field( $_REQUEST['discount_code'] ) ) );
-	} elseif ( ! empty( $discount_code ) ) {
-		global $discount_code;
-		$code_id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM $wpdb->pmpro_discount_codes WHERE code = %s LIMIT 1", sanitize_text_field( $discount_code ) ) );
 	} else {
 		$code_id = false;
 	}
