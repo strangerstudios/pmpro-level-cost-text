@@ -3,7 +3,7 @@
 Plugin Name: Paid Memberships Pro - Custom Level Cost Text Add On
 Plugin URI: https://www.paidmembershipspro.com/add-ons/pmpro-custom-level-cost-text/
 Description: Modify the default level cost text per level, per discount code, or globally via advanced settings.
-Version: 0.4.3
+Version: 0.4.4
 Author: Paid Memberships Pro
 Author URI: https://www.paidmembershipspro.com/
 Text Domain: pmpro-level-cost-text
@@ -126,7 +126,7 @@ function pclct_format_cost($cost) {
  * Apply the Level Cost Text format settings to price and period fields output by
  * the [pmpro_membership_level] shortcode, matching the "level_cost" field.
  *
- * @since TBD
+ * @since 0.4.4
  *
  * @param string $r     The formatted shortcode field output.
  * @param object $level The PMPro level object.
