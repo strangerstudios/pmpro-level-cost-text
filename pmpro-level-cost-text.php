@@ -118,9 +118,38 @@ function pclct_format_cost($cost) {
 		$cost = str_replace("Week", "Wk", $cost);
 		$cost = str_replace("Month", "Mo", $cost);
 	}
-	
+
 	return $cost;
 }
+
+/**
+ * Apply the Level Cost Text format settings to price and period fields output by
+ * the [pmpro_membership_level] shortcode, matching the "level_cost" field.
+ *
+ * @since TBD
+ *
+ * @param string $r     The formatted shortcode field output.
+ * @param object $level The PMPro level object.
+ * @param string $field The field being output.
+ * @return string The formatted shortcode field output.
+ */
+function pclct_pmpro_membership_level_shortcode_field( $r, $level, $field ) {
+	// Fields where pclct formatting is meaningful. Excludes name/description.
+	$formatted_fields = array(
+		'initial_payment',
+		'billing_amount',
+		'trial_amount',
+		'cycle_period',
+		'expiration_period',
+	);
+
+	if ( in_array( $field, $formatted_fields, true ) && '' !== $r ) {
+		$r = pclct_format_cost( $r );
+	}
+
+	return $r;
+}
+add_filter( 'pmpro_membership_level_shortcode_field', 'pclct_pmpro_membership_level_shortcode_field', 10, 3 );
 
 //Switches out variables within '!!' with the intended value
 function pclct_apply_variables( $custom_text, $cost, $level ) {
